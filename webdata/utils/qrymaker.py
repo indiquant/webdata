@@ -1,4 +1,4 @@
-__author__ = 'anishghosh'
+__author__ = 'indiquant'
 
 
 def qry_createtable(tname, colnames, coltypes, primarykeys):

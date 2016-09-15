@@ -1,4 +1,4 @@
-__author__ = 'anishghosh'
+__author__ = 'indiquant'
 
 import os
 import sqlite3
