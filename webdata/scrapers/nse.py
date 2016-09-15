@@ -1,22 +1,11 @@
 __author__ = 'anishghosh'
 
-'''
-Created on Oct 26, 2013
-
-@author: pokerface
-
-This code gets the spot price and options data from NSE India(www.nseindia.com) website
-
-'''
 
 import urllib2
 from bs4 import BeautifulSoup
-from datetime import datetime, date
+from datetime import datetime
 from enum import Enum
 import pandas as pd
-import csv
-import os
-import re
 import logging
 logging.basicConfig(format='%(levelname)s %(asctime)s:%(message)s', level=logging.DEBUG)
 
