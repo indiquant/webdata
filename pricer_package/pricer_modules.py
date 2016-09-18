@@ -13,7 +13,7 @@ from  scipy.stats import norm
 import datetime as dt
 
 def find_vol(target_value, call_put, S, K, T, r):
-    MAX_ITERATIONS = 100
+    MAX_ITERATIONS = 10
     PRECISION = 1.0e-5
 
     sigma = 0.5
@@ -55,12 +55,31 @@ if __name__ == '__main__':
     input_file_path = '/Users/ashokmuthusamy/Documents/indiaquant/options_intraday.txt'
     
     input_df = pd.read_table(os.path.expandvars(input_file_path), )
+    input_df = input_df.head()
+    #print(input_df.head())
+    
+    input_df['expiry']  = pd.to_datetime( input_df['expiry'], format='%Y%m%d' )
+    input_df['recdate']  = pd.to_datetime( input_df['recdate'] , format='%Y%m%d' )
+    
+    input_df['time_to_expiry'] = (input_df['expiry'] - input_df['recdate']) /  np.timedelta64(1, 'D') / 365.0
+    input_df['opt_type'] = input_df['opt_type'].str.lower()
     print(input_df.head())
+    #print(input_df.info() )
     
     
+    r = 0.002
     
-    for row in input_df.head().iterrows():
-        print(row)
+    for _,row in input_df.head(1).iterrows():
+        #print (row)
+        print (np.nanmean([ row['bidpx'], row['askpx'] ], axis=0),
+                   row['opt_type'], row['spot'], row['strike'], 
+                row['time_to_expiry'], r)
+        vol = find_vol( np.nanmean([ row['bidpx'], row['askpx'] ], axis=0),
+                   row['opt_type'], row['spot'], row['strike'], 
+                row['time_to_expiry'], r)
+        print (vol)
+        
+    
     
     '''
     V_market = 17.5
