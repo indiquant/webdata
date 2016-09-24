@@ -1,11 +1,12 @@
 # webdata
-web scraper to get data
 
-Keywords: NSE options, NSE futures, web scraper, NSE website, NIFTY options, NIFTY futures
+web scraper to retrieve live options data from NSE (National Stock Exchange of India) and store in a local sqlite db
+
+####Keywords: NSE options, NSE futures, web scraper, NSE website, NIFTY options, NIFTY futures
  
 Currently the following features are available:
-  1. nse_options.py parses the last snapshot of options data available in the NSE website and loads in the c:\temp\webdata.sqlite3 database, table options_intraday
-  2. all the accompanying/parsing functions are available in /webdata/scrapers/nse.py
+  1. /webdata/examples/nse_options.py parses the last snapshot of options data available in the NSE website and loads in the c:\temp\webdata.sqlite3 database, table options_intraday
+  2. all the accompanying parsing functions are available in /webdata/scrapers/nse.py
   3. Loading futures data will also be added in subsequent work
   
  
